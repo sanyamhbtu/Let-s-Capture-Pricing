@@ -280,6 +280,16 @@ function showSelectionModal(planName, planPrice) {
         document.head.appendChild(styleSheet);
     }
     
+    // Make closeModal function global
+    window.closeModal = function() {
+        modal.style.animation = 'fadeIn 0.3s ease reverse';
+        setTimeout(() => {
+            if (modal.parentNode) {
+                modal.parentNode.removeChild(modal);
+            }
+        }, 300);
+    };
+    
     document.body.appendChild(modal);
     
     // Close modal handlers
@@ -290,15 +300,7 @@ function showSelectionModal(planName, planPrice) {
         }
     });
     
-    // Make closeModal function global
-    window.closeModal = function() {
-        modal.style.animation = 'fadeIn 0.3s ease reverse';
-        setTimeout(() => {
-            if (modal.parentNode) {
-                modal.parentNode.removeChild(modal);
-            }
-        }, 300);
-    };
+    
 }
 
 // Scroll Effects
